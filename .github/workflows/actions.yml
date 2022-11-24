@@ -1,0 +1,15 @@
+name: actions workflow
+
+on: [push]
+
+jobs:
+  run-sample-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: simple stuff
+        id: greet
+        uses: actions/hello-world-javascript-action@v1
+        with:
+          who-to-greet: Emasys
+      - name: Log Greeting time
+        run: echo "${{ steps.greet.outputs.time }}"
