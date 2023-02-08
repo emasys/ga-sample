@@ -1,1 +1,1 @@
-# ga-sample
+## sample gactions
