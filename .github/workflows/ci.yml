@@ -13,13 +13,12 @@ jobs:
       - name: use node
         uses: actions/setup-node@v1
         with: 
-          node_version: "16.x"
+          node_version: "14.18.0"
       - run: npm ci
       - run: npm test -- --coverage
         env: 
           CI: true
       - name: build app
-        if: github.event_name == 'push'
         run: npm run build
       - name: deploy app
         if: github.event_name == 'push'
