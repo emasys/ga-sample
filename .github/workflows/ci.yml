@@ -2,6 +2,8 @@ name: CI
 on: 
   pull_request:
     branches: ["staging"]
+  push:
+    branches: ["staging"]
 
 jobs:
   build:
@@ -16,6 +18,16 @@ jobs:
       - run: npm test -- --coverage
         env: 
           CI: true
+      - name: build app
+        if: github.event_name == 'push'
+        run: npm run build
+      - name: deploy app
+        if: github.event_name == 'push'
+        run: npx surge --project ./build --domain strange-limit.surge.sh
+        env:
+          SURGE_USER: ${{ secrets.SURGE_USER }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+
 
 
 
