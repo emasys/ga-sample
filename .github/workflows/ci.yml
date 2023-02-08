@@ -1,0 +1,21 @@
+name: CI
+on: 
+  pull_request:
+    branches: ["staging"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: use node
+        uses: actions/setup-node@v1
+          with: 
+            node_version: "16.x"
+      - run: npm CI
+      - run: npm test
+        env: 
+          CI: true
+          
+
+
