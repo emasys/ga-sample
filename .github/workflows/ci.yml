@@ -10,12 +10,12 @@ jobs:
       - uses: actions/checkout@v2
       - name: use node
         uses: actions/setup-node@v1
-          with: 
-            node_version: "16.x"
+        with: 
+          node_version: "16.x"
       - run: npm CI
-      - run: npm test
+      - run: npm test -- --coverage
         env: 
           CI: true
-          
+
 
 
