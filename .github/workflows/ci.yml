@@ -20,7 +20,7 @@ jobs:
       - name: use node
         uses: actions/setup-node@v1
         with: 
-          node_version: "18.x"
+          node-version: "14.x"
       - run: npm ci
       - run: npm test -- --coverage
         env: 
